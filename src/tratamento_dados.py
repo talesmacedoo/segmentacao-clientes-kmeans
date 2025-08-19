@@ -1,5 +1,5 @@
 import pandas as pd
-
+from sklearn.preprocessing import StandardScaler
 
 class TratamentoDados:
     def __init__(self, caminho_arquivo):
