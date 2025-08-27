@@ -23,11 +23,10 @@ class Resultado:
         """
         Cria o DataFrame final para exportação.
         """
-        # Seleciona somente as colunas necessárias
         cols = ['cpf', 'total_de_emprestimos', 'data_ultimo_emprestimo',
                 'recencia_exata', 'frequencia', 'cluster']
 
-        # Organiza o DataFrame
+
         self.df_export = self.dataframe[cols].copy()
 
         # Ordena por cluster e recência para facilitar análise

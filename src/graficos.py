@@ -18,13 +18,10 @@ class Graficos:
         """
         plt.figure(figsize=(10, 7))
 
-        # Obtém lista de clusters únicos
         unique_clusters = sorted(df['cluster'].unique())
-
-        # Paleta de cores automática
         colors = plt.cm.get_cmap("tab10", len(unique_clusters))
 
-        # Plota os clientes por cluster
+
         for cluster_id in unique_clusters:
             cluster_data = df[df['cluster'] == cluster_id]
             plt.scatter(
@@ -36,10 +33,10 @@ class Graficos:
                 label=f"Cluster {cluster_id} ({len(cluster_data)} clientes)"
             )
 
-        # Plota os centróides
+
         plt.scatter(
-            centroids[:, 1],  # Recência
-            centroids[:, 0],  # Frequência
+            centroids[:, 1],  #Recência
+            centroids[:, 0],  #Frequência
             marker='X',
             s=250,
             c='black',
@@ -48,7 +45,6 @@ class Graficos:
             label='Centróides'
         )
 
-        # Adiciona labels nos centróides
         for i, (x, y) in enumerate(zip(centroids[:, 1], centroids[:, 0])):
             plt.text(
                 x, y,
@@ -61,15 +57,13 @@ class Graficos:
                 bbox=dict(facecolor="black", alpha=0.7, boxstyle="round,pad=0.3")
             )
 
-        # Títulos e rótulos
+
         plt.title("Segmentação de Clientes com KMeans", fontsize=15, fontweight="bold")
         plt.xlabel("Recência (anos desde último empréstimo)")
         plt.ylabel("Frequência (nº de empréstimos/ano)")
 
-        # Legenda com total de clientes por cluster
         plt.legend(title="Clusters", loc="best")
 
-        # Inverte eixo X, clientes recentes à direita
         plt.gca().invert_xaxis()
 
         plt.grid(True, alpha=0.3)

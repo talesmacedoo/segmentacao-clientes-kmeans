@@ -9,7 +9,6 @@ class Clustering:
         self.labels = None
 
     def preparar_dados(self):
-        # usa exatamente as colunas fornecidas
         self.X = self.df[['frequencia', 'recencia_exata']].values
 
     def metodo_cotovelo(self, max_k=10):
